@@ -8,7 +8,7 @@ export async function POST(request: Request) {
       depth: "Gs protein",
       points: 0,
       feedback: "Add DEEPSEEK_API_KEY to enable answer grading.",
-      idealAnswer: "The Gs-cAMP-PKA pathway should be explained in sequence.",
+      idealAnswer: "DeepSeek grading is unavailable.",
     });
   }
   if (timedOut || !answer?.trim()) {
@@ -17,7 +17,7 @@ export async function POST(request: Request) {
       depth: "Gs protein",
       points: 0,
       feedback: "Time expired before an answer was submitted.",
-      idealAnswer: "A complete answer would explain the relevant signaling mechanism.",
+      idealAnswer: "No answer was submitted.",
     });
   }
 
@@ -32,7 +32,7 @@ export async function POST(request: Request) {
         {
           role: "system",
           content:
-            "Grade a user's open-ended answer scientifically. Return exactly JSON: correct (boolean), depth (one of Gs protein, Adenylyl cyclase, cAMP, PKA, MLCK), points (10,25,50,75,or100), feedback (string), idealAnswer (string). 10 for a basic Gs/receptor answer. 25 for adenylyl cyclase. 50 for cAMP and PKA activation. 75 for downstream PKA substrate/transcription mechanisms. 100 for the deepest integrative mechanism, such as MLCK regulation or exception-level signaling detail. Give 0 points only if substantially incorrect or irrelevant, but if 0, use depth Gs protein.",
+            "Grade a single medical trivia answer. First verify it is a genuine, medically valid answer to the question. Then grade rarity by real-world familiarity, not difficulty of spelling: Gs protein = 10 points for a very common answer, Adenylyl cyclase = 25 for an above-common answer, cAMP = 50 for an uncommon answer, PKA = 75 for a rare answer, MLCK = 100 for an exceptionally rare or highly specialized answer. Return exactly JSON with correct (boolean), depth (one of Gs protein, Adenylyl cyclase, cAMP, PKA, MLCK), points (10,25,50,75,or100), feedback (string), idealAnswer (string). If invalid or irrelevant, return correct=false, depth=Gs protein, and points=0. Never award rarity points for a made-up or non-medical answer.",
         },
         { role: "user", content: JSON.stringify({ prompt, answer }) },
       ],

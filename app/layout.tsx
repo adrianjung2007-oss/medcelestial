@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "medcelestial",
-  description: "An open-ended cell signaling quiz",
+  description: "An open-ended medical rarity quiz",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

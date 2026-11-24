@@ -1,6 +1,6 @@
 # medcelestial
 
-An open-ended, seven-question cell signaling game.
+An open-ended, seven-question medical rarity game.
 
 Answers are graded at five depths:
 

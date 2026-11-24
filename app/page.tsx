@@ -49,8 +49,8 @@ export default function Home() {
     } catch {
       setQuestion({
         id: "fallback",
-        topic: "Gs protein",
-        prompt: "Explain how a Gs-coupled receptor produces an intracellular signaling response.",
+        topic: "medicine",
+        prompt: "Name a disease starting with P.",
       });
     } finally {
       setLoading(false);
@@ -109,7 +109,7 @@ export default function Home() {
         depth: "Gs protein",
         points: 0,
         feedback: "The answer could not be graded.",
-        idealAnswer: "Review the Gs-cAMP-PKA signaling sequence.",
+        idealAnswer: "Only medically valid answers receive points.",
       });
     } finally {
       setLoading(false);
@@ -132,8 +132,8 @@ export default function Home() {
       <main className="intro-page">
         <div className="brand">medcelestial</div>
         <div className="intro-copy">
-          <p className="eyebrow">Cell signaling challenge</p>
-          <h1>Dive into<br /><em>the pathway.</em></h1>
+          <p className="eyebrow">Medical rarity challenge</p>
+            <h1>How rare is<br /><em>your answer?</em></h1>
           <p>Seven open-ended questions. Thirty seconds each. The rarer your answer, the deeper you sink.</p>
           <button className="primary" onClick={start}>Start dive <span>→</span></button>
         </div>
